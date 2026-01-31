@@ -84,3 +84,28 @@ exports.deleteBook = async (req, res) => {
     res.status(400).json({ message: 'Invalid ID format' });
   }
 };
+
+
+
+exports.uploadBookCover = async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: 'No file uploaded' });
+    }
+
+    const book = await Book.findById(req.params.id);
+    if (!book) {
+      return res.status(404).json({ message: 'Book not found' });
+    }
+
+    book.coverImage = `/uploads/book-covers/${req.file.filename}`;
+    await book.save();
+
+    res.json({
+      message: 'Book cover uploaded successfully',
+      coverImage: book.coverImage
+    });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};

@@ -6,6 +6,7 @@ const BookSchema = new mongoose.Schema({
   category: { type: String, required: true },
   isbn: { type: String, unique: true },
   available: { type: Boolean, default: true },
+  coverImage: { type: String },
   publishedYear: Number
 }, { timestamps: true });
 
