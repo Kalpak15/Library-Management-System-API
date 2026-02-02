@@ -1,7 +1,6 @@
 const express = require('express');
 const dbConnect = require('./config/database.js');
 const bookRoutes = require('./routes/bookRoutes');
-const auth = require('./routes/auth');
 const authors  = require('./routes/authors')
 const users = require('./routes/user')
 const rating = require('./routes/rating')

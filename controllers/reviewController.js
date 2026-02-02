@@ -67,7 +67,7 @@ exports.updateReview = async (req, res) => {
     if (!review) {
       return res.status(404).json({ message: 'Review not found' });
     }
-
+    
     // optional ownership check
     if (review.user.toString() !== req.user.id) {
       return res.status(403).json({ message: 'Not authorized to edit this review' });
